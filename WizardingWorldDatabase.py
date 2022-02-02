@@ -4,9 +4,28 @@
 # and find out what the spell or charm does or what they are used for.
 # Note to self: better to use "key":"value" if key with phrases use dict() key="value" if single digit/word key
 
+from datetime import *
+from tkinter import *
+import tkinter as tk
+root = tk.Tk()
+
 name = input("What is your name? ")
-print("Hello, " + name.title() + ". \nWelcome to the Wizarding World's database.")
-PotterDict = {"aberto":"opens locked doors.",
+
+print("Hello, " + name.title() + ". \n\n\tWelcome to the Wizarding World's Database of Spells, Charms, Enchantments and Curses.")
+
+today = date.today()
+
+year_of_birth = int(input("\n\nWhen were you born?\n\t Type in the year of your birth: "))
+
+userAge = today.year - year_of_birth
+
+#users must be >18 to access the program
+
+Age_Restriction = 18
+
+if userAge >= Age_Restriction:
+    print("\n\nYou now have access to the Wizarding World's Database.")
+    PotterDict = {"aberto":"opens locked doors.",
                 "accio":"summon objects.",
                 "aguamenti":"summons water.",
                 "alohomora":"unlocks objects.",
@@ -83,18 +102,30 @@ PotterDict = {"aberto":"opens locked doors.",
                 "unbreakable vow":"is a magically binding contract that results in the death of whoever breaks it.",
                 "wingardium_leviosa":"causes an object to levitate.",}
 
-key = input("Type in the spell or charm to see what it does: ").lower()
-if key in PotterDict:
-    print ("This spell or charm", PotterDict[key])
+    key = input("\n\n\tType in the spell or charm to see what it does: ").lower().strip()
+
+    # key = spell
+
+    if key in PotterDict:
+        print ("\n\nThis spell or charm", PotterDict[key])
+
     while True:
-        key = input("Type in the spell or charm to see what it does: ").lower()
-        try:
-            print("This spell or charm", PotterDict[key])
-        except KeyError:
+        key = input("\n\n\tType in the spell or charm to see what it does: ").lower().strip()
+
+        if key in PotterDict:
+            print("\n\nThis spell or charm", PotterDict[key])
+
+        else:
             print("Spell not found. A report has been sent to the Ministry of Magic.")
+
+    else:
+        print("Spell not found. A report has been sent to the Ministry of Magic.")
+
+    
 else:
-    print ("Spell not found. A report has been sent to the Ministry of Magic.")
-    endProgram()
+    print("\n\tMinors are not allowed access to this database. \n\t\tPlease EXIT the program.")
+
+endProgram()
 
 
 
