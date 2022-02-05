@@ -4,14 +4,27 @@
 # and find out what the spell or charm does or what they are used for.
 # Note to self: better to use "key":"value" if key with phrases use dict() key="value" if single digit/word key
 
-from datetime import *
+from future.moves import tkinter
 from tkinter import *
-import tkinter as tk
-root = tk.Tk()
+from datetime import *
 
-name = input("What is your name? ")
+root = Tk()
 
-print("Hello, " + name.title() + ". \n\n\tWelcome to the Wizarding World's Database of Spells, Charms, Enchantments and Curses.")
+e = Entry(root, borderwidth=5)
+e.pack()
+
+def myClick():
+    hello = "Hello, " + e.get()
+    myLabel = Label(root, text =hello)
+    myLabel.pack()
+
+#separate welcome window
+myButton = Button(root, text= "Enter your name.", command = myClick)
+myButton.pack()
+
+print ("\n\n\tWelcome to the Wizarding World's Database of Spells, Charms, Enchantments and Curses.")
+
+root.mainloop()
 
 today = date.today()
 
@@ -19,7 +32,7 @@ year_of_birth = int(input("\n\nWhen were you born?\n\t Type in the year of your 
 
 userAge = today.year - year_of_birth
 
-#users must be >18 to access the program
+#users must be >18 to access this program
 
 Age_Restriction = 18
 
@@ -116,18 +129,9 @@ if userAge >= Age_Restriction:
             print("\n\nThis spell or charm", PotterDict[key])
 
         else:
-            print("Spell not found. A report has been sent to the Ministry of Magic.")
+            print("Spell not found. A report has been sent to the Ministry of Magic.\n\t\tPlease EXIT the program.")
+            endProgram()
 
-    else:
-        print("Spell not found. A report has been sent to the Ministry of Magic.")
 
-    
 else:
     print("\n\tMinors are not allowed access to this database. \n\t\tPlease EXIT the program.")
-
-endProgram()
-
-
-
-
-
