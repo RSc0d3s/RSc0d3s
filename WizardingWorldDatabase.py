@@ -2,7 +2,6 @@
 # 01/18/2022
 # This is a dictionary which allows use to key in a spell from The Wizarding World of Harry POtter
 # and find out what the spell or charm does or what they are used for.
-# Note to self: better to use "key":"value" if key with phrases use dict() key="value" if single digit/word key
 
 from future.moves import tkinter
 from tkinter import *
